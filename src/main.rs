@@ -96,6 +96,77 @@ fn main() {
       print!(" Strings are : {} , {}", x, y);   
 
 
+      let my_essage:String = String::from("Hello rust, welcome me");
+
+
+      // should avoid unwrap
+      print!(" myMessage is : {}", my_essage.chars().nth(0).unwrap());
+
+      let her_message:String = String::from("Hello rust, welcome me");
+
+      let char1: Option<char> = her_message.chars().nth(0);
+
+      match  char1{
+          Some(x) => print!("char1 is : {}", x),
+          None => print!(" None"),
+      }
+
+      print!(" char1 is : {} \n", char1.unwrap());
+
+    
+
+    // conditional statements in rust
+    let is_user_logged_in : bool = true;
+    let is_user_paid : bool = true;
+    
+   
+   if is_user_logged_in {
+       print!(" User is logged in");
+   }
+
+   if is_user_logged_in && is_user_paid {
+       print!(" User is logged in and paid \n ");
+   }
+
+   if !is_user_logged_in {
+       print!(" User is not logged in");
+   }
+
+
+   // loops in rust
+   for i in 0..10{
+       print!("i is : {} \n", i);
+   }
+
+   // print even number in rust , in given range
+   let r1: i32 = 0;
+   let r2 : i32 = 10;
+
+   for i in r1..r2{
+       if i % 2 == 0 {
+           print!("Even number is : {} \n", i);
+       }
+   }
+
+
+   // prime numbers are in rust in given range
+   let p1r : i32 = 0;
+   let p2r : i32 = 10;
+
+   for i in p1r..p2r{
+    if i % 2 != 0 {
+        print!("Prime number is : {} \n", i);
+    }
+   }
+   
+
+   for i in (p1r + 2)..(p2r -2 ) {
+    if i % 2 !=0 {
+        print!("----------");
+        println!("Prime number is: {}", i);
+    }
+}
+
 
 }
 
