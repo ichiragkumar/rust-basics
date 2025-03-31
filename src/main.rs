@@ -254,6 +254,49 @@ fn main() {
 
 
 
+    // Memory management in rust
+
+    // 1. mutability in rust
+    // 2. Stack and heaps in rust
+    // ##
+        //  1️⃣ Stack in Rust
+            // The stack stores values in function frames (stack frames).
+
+            // Each function call creates a new frame on the stack, containing:
+
+            // Function parameters.
+
+            // Local variables (if they have a fixed size known at compile time, like integers and booleans).
+
+            // Return addresses (to go back to the caller after execution).
+
+            // When a function returns, its stack frame is removed (popped) automatically.
+            //  ✅ The stack stores values inside function frames (each function call creates a new frame).
+            //  ✅ Rust automatically manages stack allocation and deallocation.
+            //  ✅ Stack is not a manual push/pop structure; instead, it's managed by function calls.
+            //  The stack does follow a "push and pop" model, 
+            //  but it is managed per function call (not manually like a stack data structure in programming).
+
+
+
+                stack_fn();   // Call the function that uses stack memory
+                heap_fn();    // Call the function that uses heap memory
+                update_string();  // Call the function that changes size of variable at runtime
+
+            
+
+    // 3. ownership in rust
+    // 4. borrowing in rust
+    // 5. lifetime in rust
+    // 6. reference in rust
+
+
+    // ## by default all variables are immutable in rust
+
+
+
+
+
 
 
 }
@@ -304,5 +347,45 @@ fn sum_of_numbers(index:i128) -> i128{
     // (n * (n - 1)) / 2
 
     return  (index * (index - 1)) / 2;
+
+}
+
+
+
+// stack
+
+fn stack_fn() {
+    // Declare a few integers on the stack
+    let a = 10;
+    let b = 20;
+    let c = a + b;
+    println!("Stack function: The sum of {} and {} is {}", a, b, c);
+}
+
+fn heap_fn() {
+    // Create a string, which is allocated on the heap
+    let s1 = String::from("Hello");
+    let s2 = String::from("World");
+    let combined = format!("{} {}", s1, s2);
+    println!("Heap function: Combined string is '{}'", combined);
+}
+
+fn update_string() {
+    // Start with a base string on the heap
+    let mut s = String::from("Initial string");
+    println!("Before update: {}", s);
+    print!(" Capacity {} ", s.capacity());
+    println!(" Length {}", s.len());
+    println!(" Bytes {}", s.as_bytes().len());
+    print!("Pointer Address is {:p}", s.as_ptr());
+
+    // Append some text to the string
+    s.push_str(" and some additional text");
+    println!("After update: {}", s);
+    print!(" Capacity {} ", s.capacity());
+    println!(" Length {}", s.len());
+    println!(" Bytes {}", s.as_bytes().len());
+    print!("Pointer Address is {:p}", s.as_ptr());
+
 
 }
