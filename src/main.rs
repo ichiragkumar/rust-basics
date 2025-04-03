@@ -286,6 +286,33 @@ fn main() {
             
 
     // 3. ownership in rust
+            // what rust says
+            // 1, if two variable s1 and s2 are trying to acceess same memory location in heap
+            // it will began to comlpain
+
+
+            // it only have one ownner either first one or last, one if you moved the ownership
+            // let s1 = String::from("Hello");
+            // let s2 : String = s1;
+            // println!("s1 is : {} , s2 is : {}", s1, s2);
+
+
+            // how it will die here, first
+            // let rihana_ji = String::from("Hello");
+            // take_rihana_ji(rihana_ji);
+
+            // println!("my_string is : {}", rihana_ji);
+
+            // in the above example, rihana, this girl move this function variable and it's boyfriend die
+
+            // here in this example, rihana_ji hi will move for sometime, and will come back to him
+            // here, his girlfriend comes, after round when she was happy
+
+            let mut rihana_ji = String::from("Hello");
+            rihana_ji = take_rihana_ji2(rihana_ji);
+            println!("my_string is : {}", rihana_ji);
+
+
     // 4. borrowing in rust
     // 5. lifetime in rust
     // 6. reference in rust
@@ -301,6 +328,15 @@ fn main() {
 
 }
 
+
+fn take_rihana_ji(rihana_ji: String) {
+    println!("rihana_Ji is : {}", rihana_ji);
+}
+
+fn take_rihana_ji2(rihana_ji: String) -> String {
+    println!("rihana_Ji is : {}", rihana_ji);
+    return rihana_ji;
+}
 
 fn get_first_word(sentence: &str) -> String {
     let mut ans = String::new();
