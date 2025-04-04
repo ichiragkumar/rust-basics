@@ -313,9 +313,36 @@ fn main() {
             println!("my_string is : {}", rihana_ji);
 
 
-    // 4. borrowing in rust
+            
+
+
+        // Borrowing and references
+
+        // make a function that take string as input as borrwos it
+        let im_chirag  = String::from("i am chirag");
+        print!("First  i was this string {}", im_chirag);
+        borrow_string(im_chirag);
+
+
+
+        let mut hello_string = String::from ("i am hello string");
+        update_hello_str(&mut hello_string);
+
+
+        // simple example for this
+        let mut str2= String::from("i am from str");
+        print!("firs i was this str2 {}", str2);
+
+
+        let  st3 = &mut str2;
+        st3.push_str("i will update origin {} string");
+        print!("now i am this {}", str2)
+
+        
+
+        
+
     // 5. lifetime in rust
-    // 6. reference in rust
 
 
     // ## by default all variables are immutable in rust
@@ -328,6 +355,16 @@ fn main() {
 
 }
 
+
+
+fn update_hello_str(input_helloString: &mut String){
+    input_helloString.push_str("now i am chirag world");
+    
+}
+fn borrow_string(chirag_string : String){
+    print!("chirag boroowred string {}", chirag_string)
+
+}
 
 fn take_rihana_ji(rihana_ji: String) {
     println!("rihana_Ji is : {}", rihana_ji);
