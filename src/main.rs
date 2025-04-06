@@ -5,7 +5,32 @@ use chrono::{Utc,  Local};
 use dotenv::dotenv;
 use std::{env};
 
+#[derive(Copy, Clone)]
 
+
+
+struct Rect {
+    width:u32,
+    height:u32
+   }
+
+impl Rect{
+    fn area(&self)->u32{
+        self.width * self.height
+    }
+}
+
+
+struct RectWithGeneric<T> {
+    width:T,
+    height:T
+   }
+
+impl<T:std::ops::Add<Output =T> + Copy > RectWithGeneric<T>{
+    fn find_area_wth_gentic_struct(&self)->T{
+        return self.width + self.height
+    }
+}
 
 fn main() {
     let utc = Utc::now();
@@ -42,6 +67,8 @@ fn main() {
         name:String::from("ichiragkumar")
     };
 
+    println!("my use struct is {}",  user.name);
+
    print_varialbe(1);
    print_varialbe("chirag");
    print_varialbe(2.9);
@@ -52,6 +79,41 @@ fn main() {
    println!("Biggest: {}", result);
 
 
+
+    // area of rectangle is
+    let r = Rect{
+        width:20,
+        height:30
+    };
+
+
+
+
+
+    print!("area of rectanglfe {}",r.area() );
+
+
+
+    let flortarea = RectWithGeneric{
+        width:20.10,
+        height:20.20
+    };
+
+
+
+    println!("are of float number {}", flortarea.find_area_wth_gentic_struct());
+
+
+    let inte_area = RectWithGeneric{
+        width:200, 
+        height:200
+    };
+
+
+    println!("area of integer number {}",inte_area.find_area_wth_gentic_struct());
+
+    println!("sum of number is {}", sum_of_two_numer_u32(29,2));
+    println!("sum of number is {}", sum_of_two_number_f32(2.9,2.20));
 
 }
 
